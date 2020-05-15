@@ -6,3 +6,8 @@ You can find [nodejs-poolController here](https://github.com/tagyoureit/nodejs-p
 
 NOTE: This plugin does not work with version 5 or below.  You must install version 6.x and above.
 
+To install the plugin follow the instructions in the [Installation and Setup](https://github.com/rstrouse/nodejs-poolController-veraPlugin/wiki/Installation-and-Setup) wiki.
+
+## What nodejs-poolController-veraPlugin Does
+It provides automation support through your Vera hub and acts as yet another controller for your pool equipment.  It is capable of integrating with scenes and other devices on your Vera.  Every device that is connected to the nodejs-poolController server can be automated anc controlled with Vera.  All status information is instant and reflected immediately.
+
