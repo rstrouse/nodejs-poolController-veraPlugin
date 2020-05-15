@@ -10,4 +10,5 @@ To install the plugin follow the instructions in the [Installation and Setup](ht
 
 ## What nodejs-poolController-veraPlugin Does
 It provides automation support through your Vera hub and acts as yet another controller for your pool equipment.  It is capable of integrating with scenes and other devices on your Vera.  Every device that is connected to the nodejs-poolController server can be automated anc controlled with Vera.  All status information is instant and reflected immediately.
+![veraDevices](https://user-images.githubusercontent.com/47839015/82096538-0cbabb80-96b6-11ea-8004-34085088c19d.png)
 
