@@ -16,8 +16,8 @@
 -- along with this program; if not, write to the Free Software
 -- Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 --
--- Version 0.1 2015-01-08 by Robert Strouse
--- * Connect/Configuration
+-- Version 1.0 2020-05-16 by Robert Strouse
+-- * Initial Version
 --
 
 module("L_PoolController", package.seeall)
