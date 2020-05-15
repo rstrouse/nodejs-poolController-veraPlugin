@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="us-ascii"?>
+<!--
+NodeJS Pool Controller Plugin
+Copyright (C) 2020 Robert Strouse
+
+This program is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License
+as published by the Free Software Foundation; either version 2
+of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+-->
+<root xmlns="urn:schemas-upnp-org:device-1-0">
+  <specVersion>
+    <major>1</major>
+    <minor>0</minor>
+  </specVersion>
+  <device>
+    <deviceType>urn:schemas-rstrouse-com:device:PoolBodySolar:1</deviceType>
+    <staticJson>D_PoolBodySolar.json</staticJson>
+    <friendlyName>Pool Body with Solar</friendlyName>
+    <manufacturer>Pentair</manufacturer>
+    <manufacturerURL/>
+    <modelDescription>Heated Pool Body</modelDescription>
+    <modelName></modelName>
+    <modelNumber></modelNumber>
+    <modelURL/>
+    <handleChildren>1</handleChildren>
+    <UDN>uuid:0920BE5F-8E90-4AFD-A52D-93124501D0BF</UDN>
+    <UPC>123456789</UPC>
+    <serviceList>
+      <service>
+        <serviceType>urn:schemas-rstrouse-com:service:PoolBody:1</serviceType>
+        <serviceId>urn:rstrouse-com:serviceId:PoolBody1</serviceId>
+        <SCPDURL>S_PoolBody.xml</SCPDURL>
+      </service>
+      <service>
+        <serviceType>urn:schemas-micasaverde-com:service:HaDevice:1</serviceType>
+        <serviceId>urn:micasaverde-com:serviceId:HaDevice1</serviceId>
+        <controlURL>/upnp/control/HaDevice1</controlURL>
+        <eventSubURL>/upnp/event/HaDevice1</eventSubURL>
+        <SCPDURL>S_HaDevice1.xml</SCPDURL>
+      </service>
+      <service>
+        <serviceType>urn:schemas-upnp-org:service:TemperatureSetpoint:1</serviceType>
+        <serviceId>urn:upnp-org:serviceId:TemperatureSetpoint1_Heat</serviceId>
+        <SCPDURL>S_TemperatureSetpoint1.xml</SCPDURL>
+      </service>
+      <service>
+        <serviceType>urn:schemas-upnp-org:service:HVAC_UserOperatingMode:1</serviceType>
+        <serviceId>urn:upnp-org:serviceId:HVAC_UserOperatingMode1</serviceId>
+        <SCPDURL>S_HVAC_UserOperatingMode1.xml</SCPDURL>
+      </service>
+    </serviceList>
+    <presentationURL/>
+  </device>
+</root>
+

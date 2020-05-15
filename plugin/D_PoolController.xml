@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="us-ascii" ?>
+<!--
+
+NodeJS Pool Controller Plugin
+Copyright (C) 2020 Robert Strouse
+
+This program is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License
+as published by the Free Software Foundation; either version 2
+of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+-->
+
+<root xmlns="urn:schemas-upnp-org:device-1-0">
+  <specVersion>
+    <major>1</major>
+    <minor>0</minor>
+  </specVersion>
+  <device>
+    <deviceType>urn:schemas-rstrouse-com:device:PoolController:1</deviceType>
+    <staticJson>D_PoolController.json</staticJson>
+    <friendlyName>NodeJS Pool Controller Plugin</friendlyName>
+    <manufacturer>Pentair</manufacturer>
+    <manufacturerURL/>
+    <modelDescription>Pool Control for Intellitouch, EasyTouch, and IntelliCenter</modelDescription>
+    <modelName>NJSPC60</modelName>
+    <modelNumber>6.0</modelNumber>
+    <modelURL/>
+    <protocol>raw</protocol>
+    <handleChildren>1</handleChildren>
+    <UDN>uuid:36D09A40-82C9-4341-B11D-1C1E85D6CBA8</UDN>
+    <UPC>OU812</UPC>
+    <serviceList>
+      <service>
+        <serviceType>urn:schemas-rstrouse-com:service:PoolController:1</serviceType>
+        <serviceId>urn:rstrouse-com:serviceId:PoolController1</serviceId>
+        <SCPDURL>S_PoolController.xml</SCPDURL>
+      </service>
+      <service>
+        <serviceType>urn:schemas-micasaverde-com:service:HaDevice:1</serviceType>
+        <serviceId>urn:micasaverde-com:serviceId:HaDevice1</serviceId>
+        <controlURL>/upnp/control/HaDevice1</controlURL>
+        <eventSubURL>/upnp/event/HaDevice1</eventSubURL>
+        <SCPDURL>S_HaDevice1.xml</SCPDURL>
+      </service>
+    </serviceList>
+    <implementationList>
+      <implementationFile>I_PoolController.xml</implementationFile>
+    </implementationList>
+    <presentationURL/>
+  </device>
+</root>

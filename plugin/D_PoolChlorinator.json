@@ -1,0 +1,674 @@
+{
+  "flashicon": "img/devices/flood_sensor_tripped.png",
+  "iconText": "1",
+  "imgIconBody": "",
+  "imgIconDimmable": "",
+  "imgIconTurnable": "",
+  "imgIconMin": "",
+  "imgIconMax": "",
+  "halloIconsDir": "pics/hallo",
+  "x": "4",
+  "y": "4",
+  "inScene": "1",
+  "default_icon": "flood_sensor_untripped.png",
+  "state_icons": [
+    {
+      "img": "flood_sensor_tripped.png",
+      "conditions": [
+        {
+          "service": "urn:upnp-org:serviceId:SwitchPower1",
+          "variable": "Status",
+          "operator": "==",
+          "value": "1"
+        }
+      ]
+    },
+    {
+      "img": "flood_sensor_untripped.png",
+      "conditions": [
+        {
+          "service": "urn:upnp-org:serviceId:SwitchPower1",
+          "variable": "Status",
+          "operator": "==",
+          "value": "0"
+        }
+      ]
+    }
+  ],
+  "doc_url": {
+    "doc_language": 1,
+    "doc_manual": 1,
+    "doc_version": 1,
+    "doc_platform": 0,
+    "doc_page": "pumps"
+  },
+  "ToggleButton": 1,
+  "Tabs": [
+    {
+      "Label": {
+        "lang_tag": "tabname_control",
+        "text": "Control"
+      },
+      "Position": "0",
+      "TabType": "flash",
+      "TopNavigationTab": "1",
+      "top_navigation_tab": 1,
+      "ControlGroup": [
+        {
+          "id": "1",
+          "scenegroup": "1",
+          "isSingle": "1"
+        },
+        {
+          "id": "2",
+          "scenegroup": "2",
+          "isSingle": "1"
+        },
+        {
+          "id": "3",
+          "scenegroup": "3",
+          "isSingle": "1"
+        },
+        {
+          "id": "4",
+          "scenegroup": "4",
+          "isSingle": "1"
+        }
+      ],
+      "SceneGroup": [
+        {
+          "id": "1",
+          "top": "0",
+          "left": "0",
+          "x": "0.5",
+          "y": "3"
+        },
+        {
+          "id": "2",
+          "top": "0",
+          "left": "0.5",
+          "x": "0.5",
+          "y": "3"
+        },
+        {
+          "id": "3",
+          "top": ".64",
+          "left": "0",
+          "x": "4.0",
+          "y": "4"
+        }
+      ],
+      "Control": [
+        {
+          "ControlGroup": "1",
+          "top": "0",
+          "left": "0",
+          "x": "0.3",
+          "y": "0.5",
+          "HorizontalMultiplier": 0.4,
+          "Label": {
+            "lang_tag": "tag_pool_label",
+            "text": "<span style='display:inline-block;vertical-align:middle;line-height:1;white-space:pre;font-size:.7em;color:gray;text-align:center;'>Pool</span>"
+          },
+          "Display": {
+            "Top": 0,
+            "Height": 20,
+            "Left": 24,
+            "Width": 64
+          },
+          "ControlType": "label"
+        },
+        {
+          "ControlGroup": "1",
+          "ControlType": "spinner_horizontal",
+          "top": "0",
+          "left": "0",
+          "text_align": "left",
+          "Label": {
+            "lang_tag": "ui7_general_ucase_on",
+            "text": "On"
+          },
+          "Style": "numeric",
+          "LabelUp": {
+            "lang_tag": "setpoint_increase",
+            "text": "increase"
+          },
+          "LabelDown": {
+            "lang_tag": "setpoint_decrease",
+            "text": "decrease"
+          },
+          "LabelSymbol": {
+            "lang_tag": "setpoint_label_symbol",
+            "text": "%"
+          },
+          "Display": {
+            "Service": "urn:rstrouse-com:serviceId:PoolChlorinator1",
+            "Variable": "poolSetpoint",
+            "MinValue": "0",
+            "MaxValue": "100",
+            "Step": "1.0",
+            "Editable": "1",
+            "InvalidInputMessage": {
+              "lang_tag": "enter_a_valid_number",
+              "text": "Enter a valid number between 0 and 100%"
+            },
+            "Top": 14,
+            "Left": 0,
+            "Width": 64,
+            "Height": 25
+          },
+          "Command": {
+            "Service": "urn:rstrouse-com:serviceId:PoolChlorinator1",
+            "Action": "SetChlorSetpoint",
+            "ActionArgumentName": "newPoolSetpointTarget",
+            "Suffix": "%"
+          },
+          "ControlCode": "pool_chlorsetpoint"
+        },
+        {
+          "ControlGroup": "1",
+          "ControlType": "line_break"
+        },
+        {
+          "ControlType": "label",
+          "ControlGroup": "1",
+          "top": "0",
+          "left": "0.5",
+          "x": "0.3",
+          "y": "0.5",
+          "HorizontalMultiplier": 0.4,
+          "Label": {
+            "lang_tag": "tag_spa_label",
+            "text": "<span style='display:inline-block;vertical-align:middle;line-height:1;white-space:pre;font-size:.7em;color:gray;text-align:center;'>Spa</span>"
+          },
+          "Display": {
+            "Top": 0,
+            "Height": 20,
+            "Left": 92,
+            "Width": 33
+          }
+        },
+        {
+          "ControlGroup": "1",
+          "ControlType": "spinner_horizontal",
+          "top": "0",
+          "left": "0",
+          "text_align": "left",
+          "Label": {
+            "lang_tag": "ui7_general_ucase_on",
+            "text": "On"
+          },
+          "Style": "numeric",
+          "LabelUp": {
+            "lang_tag": "setpoint_increase",
+            "text": "increase"
+          },
+          "LabelDown": {
+            "lang_tag": "setpoint_decrease",
+            "text": "decrease"
+          },
+          "LabelSymbol": {
+            "lang_tag": "setpoint_label_symbol",
+            "text": "%"
+          },
+          "Display": {
+            "Service": "urn:rstrouse-com:serviceId:PoolChlorinator1",
+            "Variable": "spaSetpoint",
+            "MinValue": "0",
+            "MaxValue": "100",
+            "Step": "1.0",
+            "Editable": "1",
+            "InvalidInputMessage": {
+              "lang_tag": "enter_a_valid_number",
+              "text": "Enter a valid number between 0 and 100%"
+            },
+            "Top": 14,
+            "Left": 67,
+            "Width": 64,
+            "Height": 25
+          },
+          "Command": {
+            "Service": "urn:rstrouse-com:serviceId:PoolChlorinator1",
+            "Action": "SetChlorSetpoint",
+            "ActionArgumentName": "newSpaSetpointTarget",
+            "Suffix": "%"
+          },
+          "ControlCode": "spa_chlorsetpoint"
+        },
+        {
+          "ControlGroup": "3",
+          "ControlType": "label",
+          "top": "-0.5",
+          "left": ".3",
+          "text_align": "left",
+          "Label": {
+            "lang_tag": "lbl_saltlevel",
+            "text": "<div style='font-size:.8em;width:70px;text-align:right;color:gray;'><span style='white-space:pre;'>Salt Level</span></div>"
+          },
+          "Display": {
+            "Top": 0,
+            "Left": 135,
+            "Width": 77,
+            "Height": 20
+          }
+        },
+        {
+          "ControlGroup": "3",
+          "ControlType": "variable",
+          "top": "-0.5",
+          "left": "1.2",
+          "text_align": "right",
+          "Label": {
+            "lang_tag": "data_saltlevel",
+            "text": "---"
+          },
+          "Display": {
+            "Top": 0,
+            "Left": 205,
+            "Width": 77,
+            "Height": 20,
+            "Service": "urn:rstrouse-com:serviceId:PoolChlorinator1",
+            "Variable": "saltLevel_Formatted",
+            "Value": "---"
+          }
+        },
+        {
+          "ControlGroup": "3",
+          "ControlType": "label",
+          "top": "-0.5",
+          "left": "1.74",
+          "text_align": "left",
+          "Label": {
+            "lang_tag": "data_saltlevelunits",
+            "text": "<div style='font-size:.8em;width:30px;text-align:left;color:gray;'><span style='white-space:pre;margin-left:2px;'>ppm</span></div>"
+          },
+          "Display": {
+            "Top": 0,
+            "Left": 243,
+            "Width": 10,
+            "Height": 20
+          }
+        },
+        {
+          "ControlType": "line_break",
+          "ControlGroup": "3"
+        },
+        {
+          "ControlGroup": "3",
+          "ControlType": "label",
+          "top": "2.3",
+          "left": ".1",
+          "text_align": "left",
+          "Label": {
+            "lang_tag": "lbl_chlorstatus",
+            "text": "<div style='font-size:.8em;width:70px;text-align:right;color:gray;'><span style='white-space:pre;'>Status</span></div>"
+          },
+          "Display": {
+            "Top": 14,
+            "Left": 135,
+            "Width": 77,
+            "Height": 20
+          }
+        },
+        {
+          "ControlGroup": "3",
+          "ControlType": "variable",
+          "top": "2.3",
+          "left": ".9",
+          "text_align": "right",
+          "Label": {
+            "lang_tag": "data_chlorstatus",
+            "text": "---"
+          },
+          "Display": {
+            "Top": 14,
+            "Left": 205,
+            "Width": 100,
+            "Height": 20,
+            "Service": "urn:rstrouse-com:serviceId:PoolChlorinator1",
+            "Variable": "chlorStatus_Formatted",
+            "Value": "--"
+          }
+        },
+        {
+          "ControlType": "line_break",
+          "ControlGroup": "3"
+        },
+        {
+          "ControlGroup": "3",
+          "ControlType": "label",
+          "top": "2.3",
+          "left": ".1",
+          "text_align": "left",
+          "Label": {
+            "lang_tag": "lbl_chlorstatus",
+            "text": "<div style='font-size:.8em;width:70px;text-align:right;color:gray;'><span style='white-space:pre;'>Cell</span></div>"
+          },
+          "Display": {
+            "Top": 28,
+            "Left": 135,
+            "Width": 77,
+            "Height": 20
+          }
+        },
+
+        {
+          "ControlGroup": "3",
+          "ControlType": "variable",
+          "top": "2.3",
+          "left": ".9",
+          "text_align": "right",
+          "Label": {
+            "lang_tag": "data_chlorcellstatus",
+            "text": "---"
+          },
+          "Display": {
+            "Top": 28,
+            "Left": 205,
+            "Width": 100,
+            "Height": 20,
+            "Service": "urn:rstrouse-com:serviceId:PoolChlorinator1",
+            "Variable": "cellStatus_Formatted",
+            "Value": "--"
+          }
+        },
+        {
+          "ControlType": "line_break",
+          "ControlGroup": "3"
+        },
+        {
+          "ControlGroup": "3",
+          "ControlType": "label",
+          "top": "2.3",
+          "left": ".1",
+          "text_align": "left",
+          "Label": {
+            "lang_tag": "lbl_chlorstatus",
+            "text": "<div style='font-size:.8em;width:70px;text-align:right;color:gray;margin-top:14px;'><span style='white-space:pre;'>Shock Cycle</span></div>"
+          },
+          "Display": {
+            "Top": 44,
+            "Left": 135,
+            "Width": 77,
+            "Height": 20
+          }
+        },
+        {
+          "ControlGroup": "3",
+          "ControlType": "multi_state_button",
+          "top": "0",
+          "left": "1.5",
+          "Display": {
+            "Top": 44,
+            "Left": 205
+          },
+          "states": [
+            {
+              "Label": {
+                "lang_tag": "cmd_superchlorinate_on",
+                "text": "<div style='font-size:.8em;color:gray;width:100%;' title='Cancel Shock Cycle'><span style='white-space:pre;'>Cancel</span></div>"
+              },
+              "ControlGroup": "1",
+              "Display": {
+                "Service": "urn:rstrouse-com:serviceId:PoolChlorinator1",
+                "Variable": "superChlor",
+                "Value": "1"
+              },
+              "Command": {
+                "Service": "urn:rstrouse-com:serviceId:PoolChlorinator1",
+                "Action": "SuperChlorinate",
+                "Parameters": [
+                  {
+                    "Name": "newTargetValue",
+                    "Value": "1"
+                  }
+                ]
+              },
+              "ControlCode": "ic_superchlor_cancel"
+            },
+            {
+              "Label": {
+                "lang_tag": "cmd_superchlorinate_off",
+                "text": "<div style='font-size:.8em;color:gray;' title='Shock Cycle Off'><span style='white-space:pre;'>Off</span></div>"
+              },
+              "ControlGroup": "1",
+              "Display": {
+                "Service": "urn:rstrouse-com:serviceId:PoolChlorinator1",
+                "Variable": "superChlor",
+                "Value": "0"
+              },
+              "Command": {
+                "Service": "urn:rstrouse-com:serviceId:PoolChlorinator1",
+                "Action": "SuperChlorinate",
+                "Parameters": [
+                  {
+                    "Name": "newTargetValue",
+                    "Value": "0"
+                  }
+                ]
+              },
+              "ControlCode": "ic_superchlor_start"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Label": {
+        "lang_tag": "settings",
+        "text": "Settings"
+      },
+      "Position": "1",
+      "TabType": "javascript",
+      "ScriptName": "shared.js",
+      "Function": "simple_device"
+    },
+    {
+      "Label": {
+        "lang_tag": "advanced",
+        "text": "Advanced"
+      },
+      "Position": "2",
+      "TabType": "javascript",
+      "ScriptName": "shared.js",
+      "Function": "advanced_device"
+    },
+    {
+      "Label": {
+        "lang_tag": "logs",
+        "text": "Logs"
+      },
+      "Position": "3",
+      "TabType": "javascript",
+      "ScriptName": "shared.js",
+      "Function": "device_logs"
+    },
+    {
+      "Label": {
+        "lang_tag": "notifications",
+        "text": "Notifications"
+      },
+      "Position": "4",
+      "TabType": "javascript",
+      "ScriptName": "shared.js",
+      "Function": "device_notifications"
+    },
+    {
+      "Label": {
+        "lang_tag": "ui7_device_scenes",
+        "text": "Scenes"
+      },
+      "Position": "5",
+      "TabType": "javascript",
+      "ScriptName": "shared.js",
+      "Function": "device_scenes"
+    }
+  ],
+  "sceneList": {},
+  "eventList2": [
+    {
+      "id": 1,
+      "label": {
+        "lang_tag": "ui7_a_device_is_turned_on_off",
+        "text": "A device is turned on or off"
+      },
+      "serviceId": "urn:upnp-org:serviceId:SwitchPower1",
+      "argumentList": [
+        {
+          "id": 1,
+          "dataType": "boolean",
+          "defaultValue": "1",
+          "allowedValueList": [
+            {
+              "Off": "0",
+              "HumanFriendlyText": {
+                "lang_tag": "ui7_hft_device_turned_off",
+                "text": "Whenever the _DEVICE_NAME_ is turned off"
+              }
+            },
+            {
+              "On": "1",
+              "HumanFriendlyText": {
+                "lang_tag": "ui7_hft_device_turned_on",
+                "text": "Whenever the _DEVICE_NAME_ is turned on"
+              }
+            }
+          ],
+          "name": "Status",
+          "comparisson": "=",
+          "prefix": {
+            "lang_tag": "ui7_which_mode",
+            "text": "Which mode"
+          },
+          "suffix": {}
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "label": {
+        "lang_tag": "salt_level_goes_above",
+        "text": "Salt level goes above"
+      },
+      "serviceId": "urn:rstrouse-com:serviceId:PoolChlorinator1",
+      "norepeat": "1",
+      "argumentList": [
+        {
+          "id": 1,
+          "dataType": "i4",
+          "name": "saltLevel",
+          "comparisson": ">",
+          "prefix": {
+            "lang_tag": "salt_level",
+            "text": "Salt Level"
+          },
+          "suffix": {
+            "lang_tag": "ppm",
+            "text": "ppm"
+          },
+          "HumanFriendlyText": {
+            "lang_tag": "salt_level_goes_above",
+            "text": "_DEVICE_NAME_ salt level goes above _ARGUMENT_VALUE_ ppm"
+          }
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "label": {
+        "lang_tag": "salt_level_goes_above_or_below",
+        "text": "Salt level goes above or below"
+      },
+      "serviceId": "urn:rstrouse-com:serviceId:PoolChlorinator1",
+      "norepeat": "1",
+      "argumentList": [
+        {
+          "id": 1,
+          "dataType": "i4",
+          "name": "saltLevel",
+          "comparisson": "<,>",
+          "prefix": {
+            "lang_tag": "salt_level",
+            "text": "Salt Level"
+          },
+          "suffix": {
+            "lang_tag": "ppm",
+            "text": "ppm"
+          },
+          "HumanFriendlyText": {
+            "lang_tag": "salt_level_goes_above_or_below",
+            "text": "_DEVICE_NAME_ salt level goes above/below _ARGUMENT_VALUE_ ppm"
+          }
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "label": {
+        "lang_tag": "salt_level_goes_below",
+        "text": "Salt level goes below"
+      },
+      "serviceId": "urn:rstrouse-com:serviceId:PoolChlorinator1",
+      "argumentList": [
+        {
+          "id": 1,
+          "dataType": "i4",
+          "name": "saltLevel",
+          "comparisson": "<",
+          "prefix": {
+            "lang_tag": "salt_level",
+            "text": "Salt Level"
+          },
+          "suffix": {
+            "lang_tag": "ppm",
+            "text": "ppm"
+          },
+          "HumanFriendlyText": {
+            "lang_tag": "salt_level_goes_below",
+            "text": "_DEVICE_NAME_ salt level goes below _ARGUMENT_VALUE_ ppm"
+          }
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "label": {
+        "lang_tag": "superchlor_status_changes",
+        "text": "Shock Cycle Activated/Deactivated"
+      },
+      "serviceId": "urn:rstrouse-com:serviceId:PoolChlorinator1",
+      "argumentList": [
+        {
+          "id": 1,
+          "dataType": "string",
+          "defaultValue": "",
+          "allowedValueList": [
+            {
+              "1": "Activated",
+              "HumanFriendlyText": {
+                "lang_tag": "hft_superclorinate_on",
+                "text": "_DEVICE_NAME_ shock cycle on"
+              }
+            },
+            {
+              "0": "Deactivated",
+              "HumanFriendlyText": {
+                "lang_tag": "hft_superchlorinate_complete",
+                "text": "_DEVICE_NAME_ shock cycle complete"
+              }
+            }
+          ],
+          "name": "Shock Cycle",
+          "comparisson": "=",
+          "prefix": {
+            "lang_tag": "mode",
+            "text": "Mode"
+          },
+          "suffix": {}
+        }
+      ]
+    }
+  ],
+  "DeviceType": "urn:schemas-rstrouse-com:device:PoolChlorinator:1",
+  "device_type": "urn:schemas-rstrouse-com:device:PoolChlorinator:1"
+}

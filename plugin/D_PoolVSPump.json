@@ -1,0 +1,388 @@
+{
+  "flashicon": "img/devices/co_sensor_tripped.png",
+  "iconText": "1",
+  "imgIconBody": "",
+  "imgIconDimmable": "",
+  "imgIconTurnable": "",
+  "imgIconMin": "",
+  "imgIconMax": "",
+  "halloIconsDir": "pics/hallo",
+  "x": "4",
+  "y": "4",
+  "inScene": "1",
+  "default_icon": "co_sensor_untripped.png",
+  "state_icons": [
+    {
+      "img": "co_sensor_tripped.png",
+      "conditions": [
+        {
+          "service": "urn:upnp-org:serviceId:SwitchPower1",
+          "variable": "Status",
+          "operator": "==",
+          "value": "1"
+        }
+      ]
+
+    },
+    {
+      "img": "co_sensor_untripped.png",
+      "conditions": [
+        {
+          "service": "urn:upnp-org:serviceId:SwitchPower1",
+          "variable": "Status",
+          "operator": "==",
+          "value": "0"
+        }
+      ]
+    }
+  ],
+  "DisplayStatus": {
+    "Style": "numeric",
+    "Service": "urn:rstrouse-com:serviceId:PoolController1",
+    "Variable": "pumpSpeed",
+    "MinValue": "-20",
+    "MaxValue": "100",
+    "ExtraDisplay": {
+      "EnergyUse": {
+        "Style": "numeric",
+        "Service": "urn:micasaverde-com:serviceId:EnergyMetering1",
+        "Variable": "Watts"
+      }
+    }
+  },
+  "doc_url": {
+    "doc_language": 1,
+    "doc_manual": 1,
+    "doc_version": 1,
+    "doc_platform": 0,
+    "doc_page": "pumps"
+  },
+  "ToggleButton": 1,
+  "Tabs": [
+    {
+      "Label": {
+        "lang_tag": "tabname_control",
+        "text": "Control"
+      },
+      "Position": "0",
+      "TabType": "flash",
+      "ControlGroup": [
+        {
+          "id": "1",
+          "scenegroup": "1"
+        },
+        {
+          "id": "2",
+          "scenegroup": "2"
+        }
+
+      ],
+      "SceneGroup": [
+        {
+          "id": "1",
+          "top": ".64",
+          "left": "1.7",
+          "x": "1.9",
+          "y": "4"
+        },
+        {
+          "id": "2",
+          "top": "-1.9",
+          "left": "1.7",
+          "x": "1.9",
+          "y": "-1.9"
+        }
+      ],
+      "Control": [
+        {
+          "ControlGroup": "2",
+          "ControlType": "label",
+          "top": "0",
+          "left": ".3",
+          "text_align": "left",
+          "Label": {
+            "lang_tag": "lbl_pumpspeed",
+            "text": "<div style='font-size:.8em;width:70px;text-align:right;color:gray;'><span style='white-space:pre;'>Speed</span></div>"
+          },
+          "Display": {
+            "Top": 0,
+            "Left": 0,
+            "Width": 70,
+            "Height": 20
+          }
+        },
+        {
+          "ControlGroup": "2",
+          "ControlType": "variable",
+          "top": "0",
+          "left": "1.1",
+          "text_align": "right",
+          "Label": {
+            "lang_tag": "data_pumpspeed",
+            "text": "---"
+          },
+          "Display": {
+            "Top": 0,
+            "Left": 74,
+            "Width": 70,
+            "Height": 20,
+            "Service": "urn:rstrouse-com:serviceId:PoolController1",
+            "Variable": "pumpSpeed_Formatted",
+            "Value": "---"
+          }
+        },
+        {
+          "ControlGroup": "2",
+          "ControlType": "label",
+          "top": "0",
+          "left": "1.54",
+          "text_align": "left",
+          "Label": {
+            "lang_tag": "data_pumpspeedunits",
+            "text": "<div style='font-size:.8em;width:30px;text-align:left;color:gray;'><span style='white-space:pre;margin-left:2px;'>rpm</span></div>"
+          },
+          "Display": {
+            "Top": 0,
+            "Left": 108,
+            "Width": 10,
+            "Height": 20
+          }
+        }
+      ]
+    },
+    {
+      "Label": {
+        "lang_tag": "settings",
+        "text": "Settings"
+      },
+      "Position": "1",
+      "TabType": "javascript",
+      "ScriptName": "shared.js",
+      "Function": "simple_device"
+    },
+    {
+      "Label": {
+        "lang_tag": "advanced",
+        "text": "Advanced"
+      },
+      "Position": "2",
+      "TabType": "javascript",
+      "ScriptName": "shared.js",
+      "Function": "advanced_device"
+    },
+    {
+      "Label": {
+        "lang_tag": "device_options",
+        "text": "Device Options"
+      },
+      "Position": "3",
+      "TabType": "javascript",
+      "ScriptName": "shared.js",
+      "Function": "device_zwave_options"
+    },
+    {
+      "Label": {
+        "lang_tag": "logs",
+        "text": "Logs"
+      },
+      "Position": "4",
+      "TabType": "javascript",
+      "ScriptName": "shared.js",
+      "Function": "device_logs"
+    },
+    {
+      "Label": {
+        "lang_tag": "notifications",
+        "text": "Notifications"
+      },
+      "Position": "5",
+      "TabType": "javascript",
+      "ScriptName": "shared.js",
+      "Function": "device_notifications"
+    }
+  ],
+  "sceneList": {
+  },
+  "eventList2": [
+    {
+      "id": 1,
+      "label": {
+        "lang_tag": "ui7_a_device_is_turned_on_off",
+        "text": "A device is turned on or off"
+      },
+      "serviceId": "urn:upnp-org:serviceId:SwitchPower1",
+      "argumentList": [
+        {
+          "id": 1,
+          "dataType": "boolean",
+          "defaultValue": "1",
+          "allowedValueList": [
+            {
+              "Off": "0",
+              "HumanFriendlyText": {
+                "lang_tag": "ui7_hft_device_turned_off",
+                "text": "Whenever the _DEVICE_NAME_ is turned off"
+              }
+            },
+            {
+              "On": "1",
+              "HumanFriendlyText": {
+                "lang_tag": "ui7_hft_device_turned_on",
+                "text": "Whenever the _DEVICE_NAME_ is turned on"
+              }
+            }
+          ],
+          "name": "Status",
+          "comparisson": "=",
+          "prefix": {
+            "lang_tag": "ui7_which_mode",
+            "text": "Which mode"
+          },
+          "suffix": {}
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "label": {
+        "lang_tag": "pump_speed_goes_above",
+        "text": "Pump speed goes above"
+      },
+      "serviceId": "urn:rstrouse-com:serviceId:PoolController1",
+      "norepeat": "1",
+      "argumentList": [
+        {
+          "id": 1,
+          "dataType": "i4",
+          "name": "pumpSpeed",
+          "comparisson": ">",
+          "prefix": {
+            "lang_tag": "pump_speed",
+            "text": "Pump Speed"
+          },
+          "suffix": {
+            "lang_tag": "rpm",
+            "text": "rpm"
+          },
+          "HumanFriendlyText": {
+            "lang_tag": "pump_speed_goes_above",
+            "text": "_DEVICE_NAME_ speed goes above _ARGUMENT_VALUE_ rpm"
+          }
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "label": {
+        "lang_tag": "pump_speed_goes_below",
+        "text": "Pump speed goes below"
+      },
+      "serviceId": "urn:rstrouse-com:serviceId:PoolController1",
+      "norepeat": "1",
+      "argumentList": [
+        {
+          "id": 1,
+          "dataType": "i4",
+          "name": "pumpSpeed",
+          "comparisson": "<",
+          "prefix": {
+            "lang_tag": "pumpspeed",
+            "text": "Pump Speed"
+          },
+          "suffix": {
+            "lang_tag": "rpm",
+            "text": "rpm"
+          },
+          "HumanFriendlyText": {
+            "lang_tag": "pump_speed_goes_below",
+            "text": "_DEVICE_NAME_ pump speed goes below _ARGUMENT_VALUE_ rpm"
+          }
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "label": {
+        "lang_tag": "pump_speed_goes_above_or_below",
+        "text": "Pump speed goes above or below"
+      },
+      "serviceId": "urn:rstrouse-com:serviceId:PoolController1",
+      "norepeat": "1",
+      "argumentList": [
+        {
+          "id": 1,
+          "dataType": "i4",
+          "name": "pumpSpeed",
+          "comparisson": "<,>",
+          "prefix": {
+            "lang_tag": "pump_speed",
+            "text": "Pump Speed"
+          },
+          "suffix": {
+            "lang_tag": "rpm",
+            "text": "rpm"
+          },
+          "HumanFriendlyText": {
+            "lang_tag": "pump_speed_goes_above_or_below",
+            "text": "_DEVICE_NAME_ pump speed goes above/below _ARGUMENT_VALUE_ rpm"
+          }
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "label": {
+        "lang_tag": "ui7_energy_usage_goes_above",
+        "text": "Energy usage goes above"
+      },
+      "serviceId": "urn:micasaverde-com:serviceId:EnergyMetering1",
+      "norepeat": "1",
+      "argumentList": [
+        {
+          "id": 1,
+          "dataType": "i4",
+          "name": "Watts",
+          "comparisson": ">",
+          "prefix": {
+            "lang_tag": "ui7_general_ucase_watts",
+            "text": "Watts"
+          },
+          "suffix": "",
+          "HumanFriendlyText": {
+            "lang_tag": "ui7_hft_energy_usage_goes_above",
+            "text": "Energy usage for _DEVICE_NAME_ goes above _ARGUMENT_VALUE_ Watts"
+          }
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "label": {
+        "lang_tag": "ui7_energy_usage_goes_below",
+        "text": "Energy usage goes below"
+      },
+      "serviceId": "urn:micasaverde-com:serviceId:EnergyMetering1",
+      "norepeat": "1",
+      "argumentList": [
+        {
+          "id": 1,
+          "dataType": "i4",
+          "name": "Watts",
+          "comparisson": "<",
+          "prefix": {
+            "lang_tag": "ui7_general_ucase_watts",
+            "text": "Watts"
+          },
+          "suffix": {},
+          "HumanFriendlyText": {
+            "lang_tag": "ui7_hft_energy_usage_goes_below",
+            "text": "Whenever the energy usage for _DEVICE_NAME_ goes below _ARGUMENT_VALUE_ Watts"
+          },
+          "minValue": 1
+        }
+      ]
+    }
+  ],
+  "DeviceType": "urn:schemas-rstrouse-com:device:PoolVSPump:1",
+  "device_type": "urn:schemas-rstrouse-com:device:PoolVSPump:1"
+}

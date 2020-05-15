@@ -1,0 +1,298 @@
+{
+  "flashicon": "icons/devices.swf",
+  "imgIconBody": "",
+  "imgIconDimmable": "",
+  "imgIconTurnable": "",
+  "imgIconMin": "",
+  "imgIconMax": "",
+  "halloIconsDir": "pics/hallo",
+  "inScene": "1",
+  "default_icon": "thermostat_mode_off.png",
+  "DisplayStatus": {},
+  "doc_url": {
+    "doc_language": 1,
+    "doc_manual": 1,
+    "doc_version": 1,
+    "doc_platform": 0,
+    "doc_page": "devices"
+  },
+  "x": "2",
+  "y": "1",
+  "ToggleButton": 1,
+  "Tabs": [
+    {
+      "Label": {
+        "lang_tag": "tabname_control",
+        "text": "Control"
+      },
+      "Position": "0",
+      "TabType": "flash",
+      "TopNavigationTab": "1",
+      "SceneGroup": [
+        {
+          "id": 1,
+          "top": 1,
+          "left": 0,
+          "x": 2,
+          "y": 1
+        },
+        {
+          "id": 2,
+          "top": 1,
+          "left": 0,
+          "x": 1,
+          "y": 1
+        }
+
+      ],
+      "ControlGroup": [
+        {
+          "id": "1",
+          "scenegroup": 1
+        },
+        {
+          "id": "2",
+          "isSingle": "1",
+          "scenegroup": 2
+        }
+
+      ],
+      "Control": [
+        {
+          "ControlGroup": "0",
+          "ControlType": "label",
+          "top": "-1.2",
+          "left": "-.04",
+          "text_align": "left",
+          "Label": {
+            "lang_tag": "lbl_one",
+            "text": "<div style='font-size:.8em;width:70px;text-align:right;color:gray;'><span style='white-space:pre;'>Plugin Version:</span></div>"
+          },
+          "Display": {
+            "Top": 14,
+            "Left": 0,
+            "Width": 270,
+            "Height": 20
+          }
+        },
+        {
+          "ControlGroup": "0",
+          "ControlType": "variable",
+          "top": "-1.2",
+          "left": ".27",
+          "text_align": "left",
+          "Label": {
+            "lang_tag": "version",
+            "text": ""
+          },
+          "Display": {
+            "Top": 14,
+            "Left": 70,
+            "Width": 100,
+            "Height": 20,
+            "Service": "urn:rstrouse-com:serviceId:PoolController1",
+            "Variable": "Version_Formatted",
+            "Value": "--",
+            "ID": "version"
+          }
+        },
+        {
+          "ControlGroup": "0",
+          "ControlType": "line_break"
+        },
+        {
+          "ControlGroup": "0",
+          "ControlType": "label",
+          "top": "-1.2",
+          "left": "-.04",
+          "text_align": "left",
+          "Label": {
+            "lang_tag": "lbl_one",
+            "text": "<div style='font-size:.8em;width:70px;text-align:right;color:gray;'><span style='white-space:pre;'>Node Version:</span></div>"
+          },
+          "Display": {
+            "Top": 26,
+            "Left": 0,
+            "Width": 90,
+            "Height": 20
+          }
+        },
+        {
+          "ControlGroup": "0",
+          "ControlType": "variable",
+          "top": "-1.2",
+          "left": ".27",
+          "text_align": "left",
+          "Label": {
+            "lang_tag": "version",
+            "text": ""
+          },
+          "Display": {
+            "Top": 26,
+            "Left": 70,
+            "Width": 10,
+            "Height": 20,
+            "Service": "urn:rstrouse-com:serviceId:PoolController1",
+            "Variable": "NodeVersion_Formatted",
+            "Value": "--",
+            "ID": "version"
+
+          }
+        },
+        {
+          "ControlGroup": "0",
+          "ControlType": "line_break"
+        },
+        {
+          "ControlGroup": "1",
+          "ControlType": "label",
+          "top": "-0.5",
+          "left": ".3",
+          "text_align": "left",
+          "Label": {
+            "lang_tag": "lbl_status",
+            "text": "<div style='font-size:.8em;width:70px;text-align:right;color:gray;'><span style='white-space:pre;'>Status:</span></div>"
+
+          },
+          "Display": {
+            "Top": 38,
+            "Left": 0,
+            "Width": 70,
+            "Height": 20
+          }
+        },
+        {
+          "ControlGroup": "1",
+          "ControlHeader": "1",
+          "ControlType": "variable",
+          "top": -1.7,
+          "left": 0.8,
+          "text_align": "left",
+          "HorizontalMultiplier": "2",
+          "x": 1.2,
+          "Display": {
+            "Top": 38,
+            "Left": 70,
+            "Width": 100,
+            "Height": 20,
+            "Service": "urn:rstrouse-com:serviceId:PoolController1",
+            "Variable": "status_desc_Formatted"
+          }
+        },
+        {
+          "ControlGroup": "1",
+          "ControlType": "line_break"
+        },
+        {
+          "ControlGroup": "1",
+          "ControlType": "label",
+          "top": "-0.5",
+          "left": ".3",
+          "text_align": "left",
+          "Label": {
+            "lang_tag": "lbl_status",
+            "text": "<div style='font-size:.8em;width:70px;text-align:right;color:gray;'><span style='white-space:pre;'>Mode:</span></div>"
+
+          },
+          "Display": {
+            "Top": 50,
+            "Left": 0,
+            "Width": 70,
+            "Height": 20
+          }
+        },
+        {
+          "ControlGroup": "1",
+          "ControlHeader": "1",
+          "ControlType": "variable",
+          "top": -1.7,
+          "left": 0.8,
+          "text_align": "left",
+          "x": 1.2,
+          "Display": {
+            "Top": 50,
+            "Left": 70,
+            "Width": 100,
+            "Height": 20,
+            "Service": "urn:rstrouse-com:serviceId:PoolController1",
+            "Variable": "mode_desc_Formatted"
+          }
+        },
+        {
+          "ControlGroup": "1",
+          "ControlType": "line_break"
+        },
+        {
+          "ControlGroup": "1",
+          "ControlHeader": "1",
+          "ControlType": "variable",
+          "top": -1.0,
+          "left": 0.72,
+          "text_align": "left",
+          "x": 1.2,
+          "Display": {
+            "Top": 0,
+            "Left": 90,
+            "Width": 100,
+            "Height": 20,
+            "Service": "urn:rstrouse-com:serviceId:PoolController1",
+            "Variable": "PanelMessage"
+          }
+        }
+      ]
+    },
+    {
+      "Label": {
+        "lang_tag": "configuration",
+        "text": "Configure"
+      },
+      "TopNavigationTab": "1",
+      "Position": "1",
+      "TabType": "javascript",
+      "ScriptName": "J_PoolController.js",
+      "Function": "pcpConfig.showConfigureTab"
+    },
+    {
+      "Label": {
+        "lang_tag": "advanced",
+        "text": "Advanced"
+      },
+      "Position": "2",
+      "TabType": "javascript",
+      "ScriptName": "shared.js",
+      "Function": "advanced_device"
+    },
+    {
+      "Label": {
+        "lang_tag": "notifications",
+        "text": "Notifications"
+      },
+      "Position": "3",
+      "TabType": "javascript",
+      "ScriptName": "shared.js",
+      "Function": "device_notifications"
+    },
+    {
+      "Label": {
+        "lang_tag": "ui7_device_scenes",
+        "text": "Scenes"
+      },
+      "Position": "4",
+      "TabType": "javascript",
+      "ScriptName": "shared.js",
+      "Function": "device_scenes"
+    },
+    {
+      "Label": {
+        "lang_tag": "logs",
+        "text": "Logs"
+      },
+      "Position": "5",
+      "TabType": "javascript",
+      "ScriptName": "shared.js",
+      "Function": "device_logs"
+    }
+  ],
+  "DeviceType": "urn:schemas-rstrouse-com:device:PoolController:1",
+  "device_type": "urn:schemas-rstrouse-com:device:PoolController:1"
+}

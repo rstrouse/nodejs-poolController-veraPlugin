@@ -1,0 +1,838 @@
+{
+  "flashicon": "img/devices/thermostat_mode_heating.png",
+  "iconText": "1",
+  "imgIconBody": "pics/devices/Thermostat_BODY.png",
+  "imgIconDimmable": "",
+  "imgIconTurnable": "pics/devices/Thermostat_SWITCH.png",
+  "imgIconMin": "",
+  "imgIconMax": "",
+  "halloIconsDir": "pics/hallo",
+  "x": "4",
+  "y": "4",
+  "inScene": "1",
+  "default_icon": "thermostat_mode_off.png",
+  "state_icons": [
+    {
+      "img": "thermostat_mode_off.png",
+      "conditions": [
+        {
+          "service": "urn:rstrouse-com:serviceId:PoolController1",
+          "variable": "heatStatus",
+          "operator": "==",
+          "value": "off"
+        }
+      ]
+
+    },
+    {
+      "img": "thermostat_mode_heating.png",
+      "conditions": [
+        {
+          "service": "urn:rstrouse-com:serviceId:PoolController1",
+          "variable": "heatStatus",
+          "operator": "==",
+          "value": "heater"
+        }
+      ]
+
+    },
+    {
+      "img": "thermostat_mode_auto.png",
+      "conditions": [
+        {
+          "service": "urn:rstrouse-com:serviceId:PoolController1",
+          "variable": "heatStatus",
+          "operator": "==",
+          "value": "heatpump"
+        }
+      ]
+    }
+  ],
+  "DisplayStatus": {
+    "Style": "numeric",
+    "Service": "urn:upnp-org:serviceId:TemperatureSensor1",
+    "Variable": "CurrentTemperature",
+    "MinValue": "-20",
+    "MaxValue": "100",
+    "ExtraDisplay": {
+      "HeatSetPoint": {
+        "Style": "numeric",
+        "Service": "urn:upnp-org:serviceId:TemperatureSetpoint1_Heat",
+        "Variable": "CurrentSetpoint"
+      },
+      "HeatMode": {
+        "Style": "numeric",
+        "Service": "urn:upnp-org:serviceId:HVAC_UserOperatingMode1",
+        "Variable": "ModeStatus"
+      }
+    }
+  },
+  "doc_url": {
+    "doc_language": 1,
+    "doc_manual": 1,
+    "doc_version": 1,
+    "doc_platform": 0,
+    "doc_page": "thermostats"
+  },
+  "ToggleButton": 1,
+  "Tabs": [
+    {
+      "Label": {
+        "lang_tag": "tabname_control",
+        "text": "Control"
+      },
+      "Position": "0",
+      "TabType": "flash",
+      "ControlGroup": [
+        {
+          "id": "1",
+          "scenegroup": "1"
+        },
+        {
+          "id": "4",
+          "scenegroup": "4"
+        },
+        {
+          "id": "7",
+          "scenegroup": "7"
+        },
+        {
+          "id": "6",
+          "scenegroup": "6"
+        },
+        {
+          "id": "8",
+          "scenegroup": "8"
+        }
+      ],
+      "SceneGroup": [
+        {
+          "id": "1",
+          "top": ".64",
+          "left": "0",
+          "x": "1",
+          "y": "4"
+        },
+        {
+          "id": "4",
+          "top": ".64",
+          "left": "1",
+          "x": "1",
+          "y": "0"
+        },
+        {
+          "id": "7",
+          "top": "0",
+          "left": "3",
+          "x": "0.5",
+          "y": "3"
+        },
+        {
+          "id": "6",
+          "top": ".64",
+          "left": "2.5",
+          "x": "0.5",
+          "y": "3"
+        },
+        {
+          "id": "8",
+          "top": "-1.9",
+          "left": "1.7",
+          "x": "1.9",
+          "y": "-1.9"
+        }
+      ],
+      "Control": [
+        {
+          "ControlGroup": "1",
+          "ControlType": "button",
+          "top": "0",
+          "left": "0",
+          "Label": {
+            "lang_tag": "cmd_off",
+            "text": "Off"
+          },
+          "Display": {
+            "Top": 30,
+            "Left": 50,
+            "Width": 77,
+            "Height": 20,
+            "Service": "urn:upnp-org:serviceId:HVAC_UserOperatingMode1",
+            "Variable": "ModeStatus",
+            "Value": "off"
+          },
+          "Command": {
+            "Service": "urn:upnp-org:serviceId:HVAC_UserOperatingMode1",
+            "Action": "SetModeTarget",
+            "Parameters": [
+              {
+                "Name": "NewModeTarget",
+                "Value": "off"
+              }
+            ]
+          },
+          "ControlCode": "hvac_off"
+        },
+        {
+          "ControlGroup": "4",
+          "ControlType": "button",
+          "top": "1",
+          "left": "0",
+          "Label": {
+            "lang_tag": "cmd_heater",
+            "text": "Heater"
+          },
+          "Display": {
+            "Top": 30,
+            "Left": 130,
+            "Width": 77,
+            "Height": 20,
+            "Service": "urn:upnp-org:serviceId:HVAC_UserOperatingMode1",
+            "Variable": "ModeStatus",
+            "Value": "heater"
+          },
+          "Command": {
+            "Service": "urn:upnp-org:serviceId:HVAC_UserOperatingMode1",
+            "Action": "SetModeTarget",
+            "Parameters": [
+              {
+                "Name": "NewModeTarget",
+                "Value": "heater"
+              }
+            ]
+          },
+          "ControlCode": "hvac_heater"
+        },
+        {
+          "ControlType": "line_break",
+          "ControlGroup": "4"
+        },
+        {
+          "ControlGroup": "4",
+          "ControlType": "button",
+          "top": "2",
+          "left": "0",
+          "Label": {
+            "lang_tag": "cmd_HPump",
+            "text": "H Pump"
+          },
+          "Display": {
+            "Top": 54,
+            "Left": 130,
+            "Width": 77,
+            "Height": 20,
+            "Service": "urn:upnp-org:serviceId:HVAC_UserOperatingMode1",
+            "Variable": "ModeStatus",
+            "Value": "heatpump"
+          },
+          "Command": {
+            "Service": "urn:upnp-org:serviceId:HVAC_UserOperatingMode1",
+            "Action": "SetModeTarget",
+            "Parameters": [
+              {
+                "Name": "NewModeTarget",
+                "Value": "heatpump"
+              }
+            ]
+          },
+          "ControlCode": "hvac_HPump"
+        },
+        {
+          "ControlType": "line_break",
+          "ControlGroup": "4"
+        },
+        {
+          "ControlGroup": "4",
+          "ControlType": "button",
+          "top": "2",
+          "left": "1",
+          "Label": {
+            "lang_tag": "cmd_HPumppref",
+            "text": "H Pump Pref"
+          },
+          "Display": {
+            "Top": 77,
+            "Left": 130,
+            "Width": 77,
+            "Height": 20,
+            "Service": "urn:upnp-org:serviceId:HVAC_UserOperatingMode1",
+            "Variable": "ModeStatus",
+            "Value": "HPumpPref"
+          },
+          "Command": {
+            "Service": "urn:upnp-org:serviceId:HVAC_UserOperatingMode1",
+            "Action": "SetModeTarget",
+            "Parameters": [
+              {
+                "Name": "NewModeTarget",
+                "Value": "heatpumpPref"
+              }
+            ]
+          },
+          "ControlCode": "hvac_HPumppref"
+        },
+        {
+          "ControlGroup": "6",
+          "ControlType": "slider_vertical",
+          "top": "0",
+          "left": "0",
+          "ControlPair": "1",
+          "ID": "NewCurrentSetpointHeat",
+          "Style": "numeric",
+          "Display": {
+            "Service": "urn:upnp-org:serviceId:TemperatureSetpoint1_Heat",
+            "Variable": "CurrentSetpoint",
+            "Top": 30,
+            "Left": 350,
+            "Width": 100,
+            "Height": 50
+          },
+          "Command": {
+            "Service": "urn:upnp-org:serviceId:TemperatureSetpoint1_Heat",
+            "Action": "SetCurrentSetpoint",
+            "Parameters": [
+              {
+                "Name": "NewCurrentSetpoint",
+                "ID": "NewCurrentSetpointHeat"
+              }
+            ]
+          },
+          "ControlCode": "heat_setpoint"
+        },
+        {
+          "ControlGroup": "8",
+          "ControlType": "label",
+          "top": "-1.9",
+          "left": ".3",
+          "text_align": "left",
+          "Label": {
+            "lang_tag": "lbl_airtemp",
+            "text": "<div style='font-size:.8em;width:70px;text-align:right;color:gray;'><span style='white-space:pre;'>Air Temp</span></div>"
+          },
+          "Display": {
+            "Top": 30,
+            "Left": 210,
+            "Width": 70,
+            "Height": 20
+          }
+        },
+        {
+          "ControlGroup": "8",
+          "ControlType": "variable",
+          "top": "-1.9",
+          "left": "1.35",
+          "text_align": "right",
+          "Label": {
+            "lang_tag": "data_airtemp",
+            "text": "---"
+          },
+          "Display": {
+            "Top": 30,
+            "Left": 277,
+            "Width": 20,
+            "Height": 20,
+            "Service": "urn:rstrouse-com:serviceId:PoolController1",
+            "Variable": "airTemp_Formatted",
+            "Value": "---"
+          }
+        },
+        {
+          "ControlType": "line_break",
+          "ControlGroup": "8"
+        },
+        {
+          "ControlGroup": "8",
+          "ControlType": "label",
+          "top": "-1.2",
+          "left": ".3",
+          "text_align": "left",
+          "Label": {
+            "lang_tag": "lbl_HPumptemp",
+            "text": "<div style='font-size:.8em;width:70px;text-align:right;color:gray;'><span style='white-space:pre;'>HPump Temp</span></div>"
+          },
+          "Display": {
+            "Top": 44,
+            "Left": 210,
+            "Width": 70,
+            "Height": 20
+          }
+        },
+        {
+          "ControlGroup": "8",
+          "ControlType": "label",
+          "top": "-0.5",
+          "left": ".3",
+          "text_align": "left",
+          "Label": {
+            "lang_tag": "lbl_watertemp",
+            "text": "<div style='font-size:.8em;width:70px;text-align:right;color:gray;'><span style='white-space:pre;'>Water Temp</span></div>"
+
+          },
+          "Display": {
+            "Top": 58,
+            "Left": 210,
+            "Width": 70,
+            "Height": 20
+          }
+        },
+        {
+          "ControlGroup": "8",
+          "ControlType": "variable",
+          "top": "-0.5",
+          "left": "1.35",
+          "text_align": "right",
+          "Label": {
+            "lang_tag": "data_watertemp",
+            "text": "---"
+          },
+          "Display": {
+            "Top": 58,
+            "Left": 277,
+            "Width": 20,
+            "Height": 20,
+            "Service": "urn:rstrouse-com:serviceId:PoolController1",
+            "Variable": "waterTemp_Formatted",
+            "Value": "--"
+          }
+        }
+      ]
+    },
+    {
+      "Label": {
+        "lang_tag": "settings",
+        "text": "Settings"
+      },
+      "Position": "1",
+      "TabType": "javascript",
+      "ScriptName": "shared.js",
+      "Function": "simple_device"
+    },
+    {
+      "Label": {
+        "lang_tag": "advanced",
+        "text": "Advanced"
+      },
+      "Position": "2",
+      "TabType": "javascript",
+      "ScriptName": "shared.js",
+      "Function": "advanced_device"
+    },
+    {
+      "Label": {
+        "lang_tag": "logs",
+        "text": "Logs"
+      },
+      "Position": "3",
+      "TabType": "javascript",
+      "ScriptName": "shared.js",
+      "Function": "device_logs"
+    },
+    {
+      "Label": {
+        "lang_tag": "notifications",
+        "text": "Notifications"
+      },
+      "Position": "4",
+      "TabType": "javascript",
+      "ScriptName": "shared.js",
+      "Function": "device_notifications"
+    },
+    {
+      "Label": {
+        "lang_tag": "ui7_device_scenes",
+        "text": "Scenes"
+      },
+      "Position": "5",
+      "TabType": "javascript",
+      "ScriptName": "shared.js",
+      "Function": "device_scenes"
+    }
+  ],
+  "sceneList": {
+    "group_1": {
+      "cmd_1": {
+        "label": "Off",
+        "serviceId": "urn:upnp-org:serviceId:HVAC_UserOperatingMode1",
+        "action": "SetModeTarget",
+        "arguments": {
+          "NewModeTarget": "Off"
+        }
+      },
+      "cmd_2": {
+        "label": "Heater",
+        "serviceId": "urn:upnp-org:serviceId:HVAC_UserOperatingMode1",
+        "action": "SetModeTarget",
+        "arguments": {
+          "NewModeTarget": "Heater"
+        }
+      },
+      "cmd_3": {
+        "label": "HPump",
+        "serviceId": "urn:upnp-org:serviceId:HVAC_UserOperatingMode1",
+        "action": "SetModeTarget",
+        "arguments": {
+          "NewModeTarget": "heatpump"
+        }
+      },
+      "cmd_4": {
+        "label": "HPump Pref",
+        "serviceId": "urn:upnp-org:serviceId:HVAC_UserOperatingMode1",
+        "action": "SetModeTarget",
+        "arguments": {
+          "NewModeTarget": "heatpumpPref"
+        }
+      }
+    },
+    "group_3": {
+      "cmd_1": {
+        "label": "Set Heat Setpoint",
+        "serviceId": "urn:upnp-org:serviceId:TemperatureSetpoint1_Heat",
+        "action": "SetCurrentSetpoint",
+        "argumentList": {
+          "argument_1": {
+            "dataType": "ui1",
+            "defaultValue": "",
+            "allowedValueRange": {
+              "minimum": "0",
+              "maximum": "100"
+            },
+            "prefix": "to",
+            "suffix": "&deg;",
+            "name": "NewCurrentSetpoint"
+          }
+        }
+      }
+    }
+  },
+  "eventList2": [
+    {
+      "id": 1,
+      "label": {
+        "lang_tag": "thermostat_mode_changes",
+        "text": "Heating Mode Changes"
+      },
+      "serviceId": "urn:upnp-org:serviceId:HVAC_UserOperatingMode1",
+      "argumentList": [
+        {
+          "id": 1,
+          "dataType": "string",
+          "defaultValue": "",
+          "allowedValueList": [
+            {
+              "Off": "off",
+              "HumanFriendlyText": {
+                "lang_tag": "hft_device_turned_off",
+                "text": "_DEVICE_NAME_ is turned off"
+              }
+            },
+            {
+              "Heater": "heater",
+              "HumanFriendlyText": {
+                "lang_tag": "hft_thermostat_set_to_heater",
+                "text": "_DEVICE_NAME_ is set to Heater"
+              }
+            },
+            {
+              "HPump": "heatpump",
+              "HumanFriendlyText": {
+                "lang_tag": "hft_thermostat_set_to_HPump",
+                "text": "_DEVICE_NAME_ is set to Heat Pump"
+              }
+            },
+            {
+              "HPumpPref": "heatpumpPref",
+              "HumanFriendlyText": {
+                "lang_tag": "hft_thermostat_set_to_HPumppreference",
+                "text": "_DEVICE_NAME_ is set to Heat Pump preference"
+              }
+            }
+          ],
+          "name": "ModeStatus",
+          "comparisson": "=",
+          "prefix": {
+            "lang_tag": "mode",
+            "text": "Mode"
+          },
+          "suffix": {}
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "label": {
+        "lang_tag": "thermostat_heat_setpoint_goes_over",
+        "text": "Heat setpoint goes over"
+      },
+      "serviceId": "urn:upnp-org:serviceId:TemperatureSetpoint1_Heat",
+      "argumentList": [
+        {
+          "id": 1,
+          "dataType": "i4",
+          "name": "CurrentSetpoint",
+          "comparisson": ">",
+          "prefix": {
+            "lang_tag": "temperature",
+            "text": "Temperature"
+          },
+          "suffix": {
+            "lang_tag": "degrees",
+            "text": "degrees"
+          },
+          "HumanFriendlyText": {
+            "lang_tag": "hft_thermostat_heatpoint_goes_over",
+            "text": "_DEVICE_NAME_ setpoint goes over _ARGUMENT_VALUE_ degrees"
+          }
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "label": {
+        "lang_tag": "thermostat_heatpoint_goes_below",
+        "text": "Heat setpoint goes below"
+      },
+      "serviceId": "urn:upnp-org:serviceId:TemperatureSetpoint1_Heat",
+      "argumentList": [
+        {
+          "id": 1,
+          "dataType": "i4",
+          "name": "CurrentSetpoint",
+          "comparisson": "<",
+          "prefix": {
+            "lang_tag": "temperature",
+            "text": "Temperature"
+          },
+          "suffix": {
+            "lang_tag": "degrees",
+            "text": "degrees"
+          },
+          "HumanFriendlyText": {
+            "lang_tag": "hft_thermostat_heatpoint_goes_below",
+            "text": "_DEVICE_NAME_ setpoint goes below _ARGUMENT_VALUE_ degrees"
+          }
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "label": {
+        "lang_tag": "water_temperature_goes_below",
+        "text": "Water temperature goes below"
+      },
+      "serviceId": "urn:rstrouse-com:serviceId:PoolController1",
+      "norepeat": "1",
+      "argumentList": [
+        {
+          "id": 1,
+          "dataType": "i4",
+          "name": "waterTemp",
+          "comparisson": "<",
+          "prefix": {
+            "lang_tag": "temperature",
+            "text": "Temperature"
+          },
+          "suffix": {
+            "lang_tag": "degrees",
+            "text": "degrees"
+          },
+          "HumanFriendlyText": {
+            "lang_tag": "hft_water_temperature_goes_below",
+            "text": "_DEVICE_NAME_ water temperature goes below _ARGUMENT_VALUE_ degrees"
+          }
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "label": {
+        "lang_tag": "water_temperature_goes_above",
+        "text": "Water temperature goes above"
+      },
+      "serviceId": "urn:rstrouse-com:serviceId:PoolController1",
+      "norepeat": "1",
+      "argumentList": [
+        {
+          "id": 1,
+          "dataType": "i4",
+          "name": "waterTemp",
+          "comparisson": ">",
+          "prefix": {
+            "lang_tag": "temperature",
+            "text": "Temperature"
+          },
+          "suffix": {
+            "lang_tag": "degrees",
+            "text": "degrees"
+          },
+          "HumanFriendlyText": {
+            "lang_tag": "hft_water_temperature_goes_above",
+            "text": "_DEVICE_NAME_ water temperature goes above _ARGUMENT_VALUE_ degrees"
+          }
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "label": {
+        "lang_tag": "water_temperature_goes_above_or_below",
+        "text": "Water temperature goes above or below"
+      },
+      "serviceId": "urn:rstrouse-com:serviceId:PoolController1",
+      "norepeat": "1",
+      "argumentList": [
+        {
+          "id": 1,
+          "dataType": "i4",
+          "name": "waterTemp",
+          "comparisson": "<,>",
+          "prefix": {
+            "lang_tag": "temperature",
+            "text": "Temperature"
+          },
+          "suffix": {
+            "lang_tag": "degrees",
+            "text": "degrees"
+          },
+          "HumanFriendlyText": {
+            "lang_tag": "hft_water_temperature_goes_above_or_below",
+            "text": "_DEVICE_NAME_ water temperature goes above/below _ARGUMENT_VALUE_ degrees"
+          }
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "label": {
+        "lang_tag": "air_temperature_goes_below",
+        "text": "Air temperature goes below"
+      },
+      "serviceId": "urn:rstrouse-com:serviceId:PoolController1",
+      "norepeat": "1",
+      "argumentList": [
+        {
+          "id": 1,
+          "dataType": "i4",
+          "name": "airTemp",
+          "comparisson": "<",
+          "prefix": {
+            "lang_tag": "temperature",
+            "text": "Temperature"
+          },
+          "suffix": {
+            "lang_tag": "degrees",
+            "text": "degrees"
+          },
+          "HumanFriendlyText": {
+            "lang_tag": "hft_water_temperature_goes_below",
+            "text": "_DEVICE_NAME_ water temperature goes below _ARGUMENT_VALUE_ degrees"
+          }
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "label": {
+        "lang_tag": "air_temperature_goes_above",
+        "text": "Air temperature goes above"
+      },
+      "serviceId": "urn:rstrouse-com:serviceId:PoolController1",
+      "norepeat": "1",
+      "argumentList": [
+        {
+          "id": 1,
+          "dataType": "i4",
+          "name": "airTemp",
+          "comparisson": ">",
+          "prefix": {
+            "lang_tag": "temperature",
+            "text": "Temperature"
+          },
+          "suffix": {
+            "lang_tag": "degrees",
+            "text": "degrees"
+          },
+          "HumanFriendlyText": {
+            "lang_tag": "hft_water_temperature_goes_above",
+            "text": "_DEVICE_NAME_ water temperature goes above _ARGUMENT_VALUE_ degrees"
+          }
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "label": {
+        "lang_tag": "air_temperature_goes_above_or_below",
+        "text": "Air temperature goes above or below"
+      },
+      "serviceId": "urn:rstrouse-com:serviceId:PoolController1",
+      "norepeat": "1",
+      "argumentList": [
+        {
+          "id": 1,
+          "dataType": "i4",
+          "name": "airTemp",
+          "comparisson": "<,>",
+          "prefix": {
+            "lang_tag": "temperature",
+            "text": "Temperature"
+          },
+          "suffix": {
+            "lang_tag": "degrees",
+            "text": "degrees"
+          },
+          "HumanFriendlyText": {
+            "lang_tag": "hft_air_temperature_goes_above_or_below",
+            "text": "_DEVICE_NAME_ air temperature goes above/below _ARGUMENT_VALUE_ degrees"
+          }
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "label": {
+        "lang_tag": "run_state_changes",
+        "text": "Run State Changes"
+      },
+      "serviceId": "urn:rstrouse-com:serviceId:PoolController1",
+      "argumentList": [
+        {
+          "id": 1,
+          "dataType": "string",
+          "defaultValue": "",
+          "allowedValueList": [
+            {
+              "Off": "Off",
+              "HumanFriendlyText": {
+                "lang_tag": "hft_runstate_off",
+                "text": "_DEVICE_NAME_ is not running"
+              }
+            },
+            {
+              "Heater": "Heater",
+              "HumanFriendlyText": {
+                "lang_tag": "hft_heater_is_running",
+                "text": "_DEVICE_NAME_ is running on heater"
+              }
+            },
+            {
+              "HPump": "Heat Pump",
+              "HumanFriendlyText": {
+                "lang_tag": "hft_HPump_is_running",
+                "text": "_DEVICE_NAME_ is running on HPump"
+              }
+            }
+          ],
+          "name": "RunState",
+          "comparisson": "=",
+          "prefix": {
+            "lang_tag": "mode",
+            "text": "Mode"
+          },
+          "suffix": {}
+        }
+      ]
+    }
+  ],
+  "DeviceType": "urn:schemas-rstrouse-com:device:PoolBodyHeaterHPump:1",
+  "device_type": "urn:schemas-rstrouse-com:device:PoolBodyHeaterHPump:1"
+}
