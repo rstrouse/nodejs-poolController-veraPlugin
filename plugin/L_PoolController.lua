@@ -1024,12 +1024,11 @@ function jobSetData(lul_device, lul_settings, lul_job)
 	-- The data is a bit odd coming from the interface file.  This is because vera stuffs the body
 	-- of the request into the table structure where the body is the key on the table.
 	local data = nil
-	local pat = "\"{"
+	local pat = "{"
 	for x, v in pairs(lul_settings) do
 		-- Look for json in the key.  This will be the json data that is being sent
 		if(x:sub(1, #pat) == pat) then
-			local str = x:sub(2, #string - 2)
-			data = json:decode(str)
+			data = json:decode(x)
 		end
 	end
 	if(data ~= nil) then
@@ -1052,7 +1051,11 @@ function jobSetData(lul_device, lul_settings, lul_job)
 			pnl:setPumpState(data)
 		elseif(lul_settings.targetData == "chlorinator") then
 			pnl:setChlorinatorState(data)
+		else
+			logger:verbose("Unrecognized event" .. (data or "null"))
 		end
+	else
+		logger:verbose("Unable to parse payload" .. (data or "null"))
 	end
 	return true
 end
