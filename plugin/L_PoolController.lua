@@ -60,6 +60,7 @@ local function constAPI()
 		["pHLevel"] = {["color"] = "green",["fontSize"] = ".8em",["bold"] = true,["textAlign"] = "right",["width"] = "32px"},  
 		["saturationIndex"] = {["color"] = "red",["fontSize"] = ".8em",["bold"] = true,["textAlign"] = "right",["width"] = "32px"} 
 		}
+
 	return instance
 end
 ----------------------------------------------------------------------
@@ -181,10 +182,10 @@ local function loggerAPI(id)
 		if(self.level >= 70) then luup.log(s) end
 	end
 	function instance.info(s)
-		if(self.level >= 20) then luup.log(s) end
+		if(self == nil or self.level >= 20) then luup.log(s) end
 	end
 	function instance:verbose(s)
-		if(self.level >= 50) then luup.log(s) end
+		if(self == nil or self.level >= 50) then luup.log(s) end
 	end
 	function instance:error(s)
 		luup.log(s)
@@ -955,10 +956,12 @@ local function poolControllerAPI(deviceId)
 	end
 	function instance:setConfiguration(data)
 	    local changed = false
-		if(data.ip ~= nil) then 
-			if(luup.devices[self.deviceId].ip ~= data.ip) then changed = true end
-			luup.ip_set(data.ip) 
-			comms.ipAddress = data.ip
+		if(data.ipAddress ~= nil) then 
+			if(luup.devices[self.deviceId].ip ~= data.ipAddress) then changed = true end
+			logger:info("poolController: Setting ip to " .. data.ipAddress)
+			-- luup.ip_set(data.ipAddress, self.deviceId)
+			luup.attr_set("ip", data.ipAddress, self.deviceId)
+			comms.ipAddress = data.ipAddress
 		end
 		if(data.userName ~= nil) then 
 			if(data.userName ~= comms.userName) then changed = true end
