@@ -824,7 +824,8 @@ local function poolControllerAPI(deviceId)
 		local pumpId, p = self:findChildDevice("pcpPump-" .. pump.id)
 		if(pumpId ~= nil) then
 			vars:maybeSetVariable(const.serviceIds.energyMetering, "Watts", util:nilIf(pump.watts, 0) or "", pumpId)
-			vars:maybeSetVariable(self.serviceId, "pumpStatus", pump.status.name, pumpId)
+			local stat = pump.status or {["val"]= 0, ["name"] = "off", ["desc"] = "Off"}
+			vars:maybeSetVariable(self.serviceId, "pumpStatus", stat.name, pumpId)
 			vars:maybeSetVariable(self.serviceId, "ppc", pump.ppc, pumpId)
 			vars:maybeSetVariable(self.serviceId, "mode", pump.mode, pumpId)
 			vars:maybeSetVariable(self.serviceId, "runTime", pump.time, pumpId)
