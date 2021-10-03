@@ -410,7 +410,7 @@ local function varsAPI(id)
 				self:maybeSetVariable(serviceId, variable, value or "--", deviceId, style)
 				self:maybeSetVariableHtml(serviceId, variable .. "_Formatted", value or "--", deviceId, style)
 			elseif(formatType == "saturationIndex") then
-				local si = tonumber(value)
+				local si = tonumber(value or 0)
 				if(si >= 0.3) then style["color"] = "crimson"
 				elseif(si >= 0.25) then style["color"] = "orange"
 				elseif(si >= -0.25) then style["color"] = "green"
@@ -419,7 +419,7 @@ local function varsAPI(id)
 				self:maybeSetVariable(serviceId, variable, si, deviceId, style)
 				self:maybeSetVariableHtml(serviceId, variable .. "_Formatted", si, deviceId, style)
 			elseif(formatType == "pHLevel") then
-				local ph = tonumber(value)
+				local ph = tonumber(value or 0)
 				if(ph >= 7.8) then style["color"] = "crimson"
 				elseif(ph >= 7.7) then style["color"] = "orange"
 				elseif(ph >= 7.6) then style["color"] = "green"
@@ -428,7 +428,7 @@ local function varsAPI(id)
 				self:maybeSetVariable(serviceId, variable, ph, deviceId, style)
 				self:maybeSetVariableHtml(serviceId, variable .. "_Formatted", ph, deviceId, style)
 			elseif(formatType == "orpLevel") then
-				local orp = tonumber(value)
+				local orp = tonumber(value or 0)
 				if(orp >= 755) then	style["color"] = "crimson"
 				elseif(orp >= 750) then	style["color"] = "orange"
 				elseif(orp >= 650) then	style["color"] = "green"
@@ -437,7 +437,7 @@ local function varsAPI(id)
 				self:maybeSetVariable(serviceId, variable, orp, deviceId, style)
 				self:maybeSetVariableHtml(serviceId, variable .. "_Formatted", orp, deviceId, style)
 			elseif(formatType == "saltLevel") then
-				local salt = tonumber(value)
+				local salt = tonumber(value or 0)
 				if(salt > 4700) then style["color"] = "crimson"
 				elseif(salt > 4500) then style["color"] = "orange"
 				elseif(salt > 3000) then style["color"] = "green"
@@ -1094,7 +1094,7 @@ function jobSetBodySetpointTarget(lul_device, lul_settings, lul_job)
 	local equipmentId = vars:getVariable(pnl.serviceId, "equipmentId", lul_device, -1)
 	logger:verbose("poolController: Changing [" .. lul_device .. "] body setPoint to " .. lul_settings.NewCurrentSetpoint)
 	if(equipmentType == "body") then
-		comms:putJson("/state/" .. equipmentType .. "/setPoint", {["id"] = tonumber(equipmentId), ["setPoint"] = lul_settings.NewCurrentSetpoint})
+		comms:putJson("/state/" .. equipmentType .. "/setPoint", {["id"] = tonumber(equipmentId), ["heatSetpoint"] = lul_settings.NewCurrentSetpoint})
 	end
 	return true
 end
